@@ -8,9 +8,13 @@ import epicode.SPRINGWEEK5DAY3.entities.Menu;
 import epicode.SPRINGWEEK5DAY3.entities.drinks.Coke;
 import epicode.SPRINGWEEK5DAY3.entities.drinks.Sprite;
 import epicode.SPRINGWEEK5DAY3.entities.drinks.Water;
+import epicode.SPRINGWEEK5DAY3.entities.merchandise.Cartolina;
+import epicode.SPRINGWEEK5DAY3.entities.merchandise.Gadget;
+import epicode.SPRINGWEEK5DAY3.entities.merchandise.Spilla;
 import epicode.SPRINGWEEK5DAY3.entities.pizzas.Pizza;
 import epicode.SPRINGWEEK5DAY3.entities.toppings.HamTopping;
 import epicode.SPRINGWEEK5DAY3.entities.toppings.OnionTopping;
+import epicode.SPRINGWEEK5DAY3.entities.toppings.SalameTopping;
 
 @Configuration
 public class MenuConfig {
@@ -25,43 +29,60 @@ public class MenuConfig {
 		menu.getMenuEntries().add(getCoke());
 		menu.getMenuEntries().add(getSprite());
 		menu.getMenuEntries().add(getWater());
+		menu.getMenuEntries().add(getSpilla());
+		menu.getMenuEntries().add(getCartolina());
 
 		return menu;
 	}
 
-	@Bean
+	@Bean(name = "margherita")
 	Consummation getMargherita() {
 		return new Pizza();
 	}
 
-	@Bean
+	@Bean(name = "pizzaProsciutto")
 	Consummation getPizzaProsciutto() {
 		return new HamTopping(new Pizza());
 	}
 
-	@Bean
+	@Bean(name = "pizzaCipolla")
 	Consummation getPizzaCipolla() {
 		return new OnionTopping(new Pizza());
 	}
 
-	@Bean
+	@Bean(name = "pizzaProsciuttoCipolla")
 	Consummation getPizzaProsciuttoCipolla() {
 		return new HamTopping(new OnionTopping(new Pizza()));
 	}
 
-	@Bean
+	@Bean(name = "diavola")
+	Consummation getPizzaSalame() {
+		return new SalameTopping(new Pizza());
+	}
+
+	@Bean(name = "coca cola")
 	Consummation getCoke() {
 		return new Coke(0.5);
 	}
 
-	@Bean
+	@Bean(name = "sprite")
 	Consummation getSprite() {
 		return new Sprite(0.5);
 	}
 
-	@Bean
+	@Bean(name = "acqua")
 	Consummation getWater() {
 		return new Water(0.5);
+	}
+
+	@Bean(name = "spilla")
+	Gadget getSpilla() {
+		return new Spilla("spilla");
+	}
+
+	@Bean(name = "cartolina")
+	Gadget getCartolina() {
+		return new Cartolina("cartolina");
 	}
 
 }
