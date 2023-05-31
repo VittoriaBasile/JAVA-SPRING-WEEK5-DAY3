@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import epicode.SPRINGWEEK5DAY3.entities.Product;
-import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -21,7 +20,9 @@ public class Order {
 	private int coperti;
 	private LocalDateTime oraAcquisizione;
 	// @Value("${application.costoCoperto}")
-	private double costoCoperto;
+	private double costoCoperto = 2.00;
+	private double costoCoperti;
+
 	private double importoTotale;
 
 	public Order(int numeroOrdine, Table tavolo, List<Product> comanda, StatoOrdine statoOrdine, int coperti,
@@ -33,13 +34,13 @@ public class Order {
 		this.statoOrdine = statoOrdine;
 		this.coperti = coperti;
 		this.oraAcquisizione = oraAcquisizione;
-		setImportoTotale(totale(comanda));
+		this.costoCoperti = coperti * costoCoperto;
+		setImportoTotale(totale(comanda) + this.costoCoperti);
 	}
 
-	@PostConstruct
+	// @PostConstruct
 	public double totale(List<Product> lista) {
-		double costoCoperti = 2.00 * this.coperti;
-		return lista.stream().mapToDouble(Product::getPrice).sum() + costoCoperti;
+		return lista.stream().mapToDouble(Product::getPrice).sum();
 
 	}
 }

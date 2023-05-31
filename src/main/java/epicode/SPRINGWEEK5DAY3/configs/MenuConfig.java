@@ -26,6 +26,7 @@ public class MenuConfig {
 
 		menu.getMenuEntries().add(getMargherita());
 		menu.getMenuEntries().add(getMargheritaXL());
+		menu.getMenuEntries().add(getPizzaSalame());
 		menu.getMenuEntries().add(getPizzaProsciutto());
 		menu.getMenuEntries().add(getPizzaCipolla());
 		menu.getMenuEntries().add(getPizzaProsciuttoCipolla());
