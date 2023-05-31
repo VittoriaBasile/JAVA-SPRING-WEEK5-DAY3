@@ -19,6 +19,7 @@ import epicode.SPRINGWEEK5DAY3.entities.orders.StatoOrdine;
 import epicode.SPRINGWEEK5DAY3.entities.orders.StatoTavolo;
 import epicode.SPRINGWEEK5DAY3.entities.orders.Table;
 import epicode.SPRINGWEEK5DAY3.entities.pizzas.Pizza;
+import epicode.SPRINGWEEK5DAY3.entities.toppings.OnionTopping;
 import epicode.SPRINGWEEK5DAY3.entities.toppings.SalameTopping;
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,7 +35,10 @@ public class MenuRunner implements CommandLineRunner {
 		menu.print();
 
 		Consummation pizza1 = (Pizza) ctx.getBean("margherita");
-		SalameTopping pizza2 = (SalameTopping) ctx.getBean("diavola");
+		OnionTopping pizza2 = (OnionTopping) ctx.getBean("pizzaCipolla");
+		SalameTopping pizza3 = new SalameTopping((Pizza) ctx.getBean("margherita"));
+		System.out.println(pizza3);
+
 		Gadget spilletta1 = (Gadget) ctx.getBean("spilla");
 		Drink bibita1 = (Drink) ctx.getBean("sprite");
 

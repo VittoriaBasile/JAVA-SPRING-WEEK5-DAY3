@@ -2,6 +2,7 @@ package epicode.SPRINGWEEK5DAY3.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 import epicode.SPRINGWEEK5DAY3.entities.Consummation;
 import epicode.SPRINGWEEK5DAY3.entities.Menu;
@@ -12,6 +13,7 @@ import epicode.SPRINGWEEK5DAY3.entities.merchandise.Cartolina;
 import epicode.SPRINGWEEK5DAY3.entities.merchandise.Gadget;
 import epicode.SPRINGWEEK5DAY3.entities.merchandise.Spilla;
 import epicode.SPRINGWEEK5DAY3.entities.pizzas.Pizza;
+import epicode.SPRINGWEEK5DAY3.entities.pizzas.PizzaXL;
 import epicode.SPRINGWEEK5DAY3.entities.toppings.HamTopping;
 import epicode.SPRINGWEEK5DAY3.entities.toppings.OnionTopping;
 import epicode.SPRINGWEEK5DAY3.entities.toppings.SalameTopping;
@@ -23,6 +25,7 @@ public class MenuConfig {
 		Menu menu = new Menu();
 
 		menu.getMenuEntries().add(getMargherita());
+		menu.getMenuEntries().add(getMargheritaXL());
 		menu.getMenuEntries().add(getPizzaProsciutto());
 		menu.getMenuEntries().add(getPizzaCipolla());
 		menu.getMenuEntries().add(getPizzaProsciuttoCipolla());
@@ -36,8 +39,15 @@ public class MenuConfig {
 	}
 
 	@Bean(name = "margherita")
+	@Scope("prototype")
 	Consummation getMargherita() {
 		return new Pizza();
+	}
+
+	@Bean(name = "margheritaXL")
+	@Scope("prototype")
+	Consummation getMargheritaXL() {
+		return new PizzaXL();
 	}
 
 	@Bean(name = "pizzaProsciutto")
